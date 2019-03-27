@@ -1,0 +1,73 @@
+header {
+  background-color: $mainColor;
+  max-height: 4rem;
+  height: 4rem;
+  width: 100%;
+  position: fixed;
+  z-index: 100;
+  
+  .main {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    height: inherit;
+
+    nav {
+      background: $mainColor;
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 100vw;
+      height: 100vh;
+      box-shadow: 2px 2px 3px #333;
+      transition: all 300ms ease-in-out;
+
+      ul {
+        list-style: none;
+        padding-top: 25%;
+
+        li {
+          margin-bottom: 0rem;
+          font-size: 1.7rem;
+          padding: 1.5rem 0;
+
+          a {
+            color: $textColor2;
+            text-decoration: none;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          &:hover {
+            background: darken($mainColor, 10%);
+          }
+
+        }
+      }
+    }
+
+    .active-link {
+      font-weight: 500;
+      color: gold;
+    }
+
+    .menu-active {
+      left: -20%;
+    }
+
+    .cont-logo {
+      height: 100%;
+      padding: 0.2rem;
+
+      img {
+        height: 100%;
+      }
+
+    }
+
+  }
+
+}

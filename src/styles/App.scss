@@ -1,0 +1,47 @@
+// Color Vars
+$mainColor: teal;
+$textColor: #2a2a2a;
+$textColor2: snow;
+
+//Screen Sizes
+$landscape: 500px;
+$tablet: 750px;
+$small: 992px;
+$medium: 1024px;
+$large: 1200px;
+$x-large: 1500px;
+
+$codeFont: 'Source Code Pro', monospace;
+$mainFont: 'Rubik', sans-serif;
+
+
+//Fonts
+@import url('https://fonts.googleapis.com/css?family=Rubik');
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+
+//Bootstrap
+@import './bootstrap.min.css';
+
+//General Styles
+@import './general';
+
+//navbar
+@import '../components/navbar/scss/menu-btn';
+@import '../components/navbar/scss/navbar-sm';
+@import '../components/navbar/scss/navbar-landscape';
+@import '../components/navbar/scss/navbar-tablet';
+
+//Landing page
+@import '../components/landing/scss/Landing';
+@import '../components/landing/scss/Landing-small';
+@import '../components/landing/scss/Landing-landscape';
+@import '../components/landing/scss/Landing-tablet';
+
+//PortFolio
+@import '../components/portfolio/scss/portfolio';
+@import '../components/portfolio/scss/portfolio-tablet';
+@import '../components/portfolio/scss/portfolio-large';
+
+//About 
+@import '../components/about/scss/about';
