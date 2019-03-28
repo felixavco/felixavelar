@@ -1,5 +1,6 @@
 import ecommerce from '../../img/ecommerce.PNG';
 import cachadas from '../../img/cachadas.PNG';
+import devBook from '../../img/devbook.PNG';
 import storyBooks from '../../img/storybooks.PNG';
 import JSGame from '../../img/JSGame.PNG';
 
@@ -19,6 +20,15 @@ const projects = [
     url: "https://api.felixavelar.com/", 
     description: "Cachadas (bargains) SV is a fullstack project buid with Node, Express, MongoDB and React & Redux, this application allows users to create post to sell or buy products, in order to create a post the user needs to create an account, once the user creates the account a verification email is sent to the user's email address, the message is sent using Sendgrid's API, the application also supports multiple image uploads, password reset via secret token sent to the registered email address."
   }, 
+
+  {
+    name: "DevBook", 
+    img: devBook, 
+    github: "https://github.com/felixavco/devConnector", 
+    url: "https://devbook.herokuapp.com/", 
+    description: "DevBook is a full stack appliation build with Node.js, Express, MongoDB, React and Redux, this is a social media for developers, developers can create a profile add experience, education, create post, and comment other user's posts."
+  }, 
+
   {
     name: "StoryBooks", 
     img: storyBooks, 
