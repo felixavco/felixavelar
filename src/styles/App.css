@@ -333,10 +333,10 @@ header {
       font-size: 1.1rem; } }
 
 #portfolio {
-  background-image: -webkit-gradient(linear, left top, right top, from(teal), to(gold)), url("../img/mainBg.jpg");
-  background-image: -webkit-linear-gradient(left, teal 0%, gold 100%), url("../img/mainBg.jpg");
-  background-image: -o-linear-gradient(left, teal 0%, gold 100%), url("../img/mainBg.jpg");
-  background-image: linear-gradient(to right, teal 0%, gold 100%), url("../img/mainBg.jpg");
+  background-image: -webkit-gradient(linear, left top, right top, from(teal), to(gold)), url("../img/secondaryBg.jpg");
+  background-image: -webkit-linear-gradient(left, teal 0%, gold 100%), url("../img/secondaryBg.jpg");
+  background-image: -o-linear-gradient(left, teal 0%, gold 100%), url("../img/secondaryBg.jpg");
+  background-image: linear-gradient(to right, teal 0%, gold 100%), url("../img/secondaryBg.jpg");
   background-attachment: fixed;
   background-blend-mode: color; }
   #portfolio .container {
