@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import mainBg from '../../img/mainBg.jpg';
+import Loader from '../commons/Loader';
 
 class Landing extends Component {
 	constructor() {
@@ -11,7 +12,8 @@ class Landing extends Component {
 			txt: '',
 			wait: 3000,
 			isDeleting: false,
-			wordIndex: 0
+			wordIndex: 0, 
+			isLoading: true
 		};
 	}
 
@@ -49,10 +51,17 @@ class Landing extends Component {
 	};
 
 	componentDidMount() {
-		this.typing();
+		setTimeout(() => {
+			this.setState({isLoading: false});
+			this.typing();
+		}, 1500);
 	}
 
 	render() {
+		let loaderComponent = null;
+		if (this.state.isLoading) {
+			loaderComponent = <Loader />;
+		}
 		return (
 			<section id="landing" style={{ backgroundImage: `url(${mainBg})` }}>
 				<div className="bg-overlay" />
@@ -93,6 +102,7 @@ class Landing extends Component {
 						</div>
 					</div>
 				</div>
+				{ loaderComponent }
 			</section>
 		);
 	}

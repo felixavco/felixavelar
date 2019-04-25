@@ -10,7 +10,7 @@ const projects = [
     img: ecommerce, 
     github: "https://github.com/felixavco/e_Commerce_React", 
     url: "https://turing.felixavelar.com/", 
-    description: "An Ecommerce platform build with React & Redux and Materialize Css as HTML/CSS Framework, responsive design adaptable to all screen sizes. This application displays all the items with a pagination but also supports live searches, the user can add items to the cart and see in real time the quantity of items in cart and the total of all the items in the cart, users can also remove or add more items to the cart."
+    description: "An Ecommerce platform built with React & Redux and Materialize Css as HTML/CSS Framework, responsive design adaptable to all screen sizes. This application displays all the items with a pagination but also supports live searches, the user can add items to the cart and see in real time the quantity of items in cart and the total of all the items in the cart, users can also remove or add more items to the cart."
   }, 
 
   {
@@ -18,7 +18,7 @@ const projects = [
     img: cachadas, 
     github: "https://github.com/felixavco/cachadas", 
     url: "http://api.felixavelar.com/", 
-    description: "Cachadas (bargains) SV is a fullstack project buid with Node, Express, MongoDB and React & Redux, this application allows users to create post to sell or buy products, in order to create a post the user needs to create an account, once the user creates the account a verification email is sent to the user's email address, the message is sent using Sendgrid's API, the application also supports multiple image uploads, password reset via secret token sent to the registered email address."
+    description: "Cachadas (bargains) SV is a fullstack project built with Node, Express, MongoDB and React & Redux, this application allows users to create post to sell or buy products, in order to create a post the user needs to create an account, once the user creates the account a verification email is sent to the user's email address, the message is sent using Sendgrid's API, the application also supports multiple image uploads, password reset via secret token sent to the registered email address."
   }, 
 
   {
@@ -26,7 +26,7 @@ const projects = [
     img: devBook, 
     github: "https://github.com/felixavco/devConnector", 
     url: "https://devbook.herokuapp.com/", 
-    description: "DevBook is a full stack appliation build with Node.js, Express, MongoDB, React and Redux, this is a social media for developers, developers can create a profile add experience, education, create post, and comment other user's posts."
+    description: "DevBook is a full stack appliation built with Node.js, Express, MongoDB, React and Redux, this is a social media for developers, developers can create a profile add experience, education, create post, and comment other user's posts."
   }, 
 
   {
@@ -41,7 +41,7 @@ const projects = [
     img: JSGame, 
     github: "https://github.com/felixavco/Veyrix_game", 
     url: "http://veyrix.xyz", 
-    description: "This is a simple game build with vanilla JavaScript, the game objective is to hit Olaf with the hammer"
+    description: "This is a simple game built with vanilla JavaScript, the game objective is to hit Olaf with the hammer"
   }
 ]
 

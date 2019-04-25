@@ -3,7 +3,7 @@
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
-  height: 100vh;
+  height: calc(100vh - 64px);
   @include flex();
 
   .bg-overlay {
@@ -15,7 +15,7 @@
     top: 4rem;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: calc(100% - 64px);
   }
 
   .window {
