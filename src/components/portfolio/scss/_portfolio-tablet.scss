@@ -1,9 +1,8 @@
 @media (min-width: $tablet) {
 	#portfolio {
-		.container {
-			.item {
-				width: 800px;
-			}
-		}
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);	
+		grid-gap: 1.5rem;
+		padding: 1.5rem 2rem;
 	}
 }

@@ -27,9 +27,7 @@ class Portfolio extends Component {
 
 		return (
 			<div id="portfolio">
-				<div className="container">
-					{ projects_items }
-				</div>
+				{ projects_items }
 				{ loaderComponent }
 			</div>
 		);
