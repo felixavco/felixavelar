@@ -1,9 +1,11 @@
 import React from 'react';
+import AOS from 'aos';
 
-const Card = ({project}) => {
+const Card = ({ project, isLoading, index }) => {
 	const { name, img, github, url, description } = project;
+	AOS.init();
 	return (
-		<div className="item">
+		<div className="item" data-aos={isLoading ? "" : 'zoom-in'}>
 			<div className="item-img-cont">
 				<a href={url} target="_blank" rel="noopener noreferrer">
 					<img src={img} alt="" />
@@ -12,7 +14,9 @@ const Card = ({project}) => {
 
 			<div className="item-title">
 				<a href={url} target="_blank" rel="noopener noreferrer">
-					<h3>{name}</h3>
+					<h3>
+						{name}
+					</h3>
 				</a>
 			</div>
 

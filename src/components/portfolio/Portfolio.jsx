@@ -17,7 +17,12 @@ class Portfolio extends Component {
 
 	render() {
 		const projects_items = projects.map((project, i) => (
-			<Card key={i} project={project}/>
+			<Card 
+				key={i} 
+				index={i + 1}
+				project={project} 
+				isLoading={this.state.isLoading}
+			/>
 		));
 
 		let loaderComponent = null; 

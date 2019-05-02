@@ -1,6 +1,8 @@
 @import url("https://fonts.googleapis.com/css?family=Rubik");
 @import url("https://fonts.googleapis.com/css?family=Source+Code+Pro");
 @import url(./bootstrap.min.css);
+@import url(../../node_modules/aos/dist/aos.css);
+@import url(../../node_modules/animate.css/animate.min.css);
 body {
   font-family: 'Rubik', sans-serif; }
 
