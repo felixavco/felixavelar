@@ -1,18 +1,19 @@
 import React, { Component } from 'react';
 import mainBg from '../../img/mainBg.jpg';
 import Loader from '../commons/Loader';
+import Particles from 'react-particles-js';
 
 class Landing extends Component {
 	constructor() {
 		super();
 
 		this.state = {
-			textProfession: [ '"Web Developer"', '"Javascript Developer"', '"WordPress Developer"' ],
+			textProfession: ['"Web Developer"', '"Javascript Developer"', '"WordPress Developer"'],
 			profession: '',
 			txt: '',
 			wait: 3000,
 			isDeleting: false,
-			wordIndex: 0, 
+			wordIndex: 0,
 			isLoading: true
 		};
 	}
@@ -52,21 +53,75 @@ class Landing extends Component {
 
 	componentDidMount() {
 		setTimeout(() => {
-			this.setState({isLoading: false});
+			this.setState({ isLoading: false });
 			this.typing();
 		}, 1500);
 	}
 
 	render() {
-		const { isLoading } = this.state
+		const { isLoading } = this.state;
 		let loaderComponent = null;
 		if (isLoading) {
 			loaderComponent = <Loader />;
 		}
+
+		const options = {
+	    "particles": {
+	        "number": {
+	            "value": 500,
+	            "density": {
+	                "enable": true
+	            }
+	        },
+	        "size": {
+	            "value": 3,
+	            "random": true,
+	            "anim": {
+	                "speed": 4,
+	                "size_min": 0.3
+	            }
+	        },
+	        "line_linked": {
+	            "enable": false
+	        },
+	        "move": {
+	            "random": true,
+	            "speed": 1,
+	            "direction": "right",
+	            "out_mode": "out"
+	        }
+	    },
+	    "interactivity": {
+	        "events": {
+	            "onhover": {
+	                "enable": false,
+	                "mode": "bubble"
+	            },
+	            "onclick": {
+	                "enable": true,
+	                "mode": "repulse"
+	            }
+	        },
+	        "modes": {
+	            "bubble": {
+	                "distance": 250,
+	                "duration": 2,
+	                "size": 0,
+	                "opacity": 0
+	            },
+	            "repulse": {
+	                "distance": 250,
+	                "duration": 1
+	            }
+	        }
+	    }
+	};
+
 		return (
 			<section id="landing" style={{ backgroundImage: `url(${mainBg})` }}>
+				<Particles className="particles" params={options} />
 				<div className="bg-overlay" />
-				<div className={`window animated  ${!isLoading ? "fadeInDown" : ""}`}>
+				<div className={`window animated  ${!isLoading ? 'fadeInDown' : ''}`}>
 					<div className="window-top">
 						<span className="window-title">
 							<i className="fas fa-terminal" /> &nbsp; About Me
@@ -90,7 +145,9 @@ class Landing extends Component {
 							<p className="inner">
 								I am a:
 								<span className="value" id="profession">
-									<span className="txt">{this.state.profession}</span>
+									<span className="txt">
+										{this.state.profession}
+									</span>
 								</span>,
 							</p>
 							<p className="inner">
@@ -103,7 +160,7 @@ class Landing extends Component {
 						</div>
 					</div>
 				</div>
-				{ loaderComponent }
+				{loaderComponent}
 			</section>
 		);
 	}

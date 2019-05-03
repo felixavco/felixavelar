@@ -8,6 +8,8 @@
     "axios": "^0.18.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-google-recaptcha": "^1.0.5",
+    "react-particles-js": "^2.6.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.8"
   },
