@@ -20,7 +20,7 @@ export default class Navbar extends Component {
 		const { navClass, menu } = this.state;
 
 		const menuItems = menu.map((e, i) => (
-			<li key={i} onClick={this.btnMenu}>
+			<li className="animated fadeInDown" key={i} onClick={this.btnMenu}>
 				<NavLink exact activeClassName="active-link" to={e.path}>
 					{e.name}
 				</NavLink>
@@ -29,10 +29,10 @@ export default class Navbar extends Component {
 
 		return (
 			<header>
-				<div className="container main">
+				<div className="container main ">
 					<div className="cont-logo">
 						<Link to="/">
-							<img src={Logo} alt="Felix Avelar's Logo" />
+							<img className="animated rollIn" src={Logo} alt="Felix Avelar's Logo" />
 						</Link>
 					</div>
 

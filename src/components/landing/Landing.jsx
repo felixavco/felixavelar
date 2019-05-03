@@ -66,7 +66,7 @@ class Landing extends Component {
 		return (
 			<section id="landing" style={{ backgroundImage: `url(${mainBg})` }}>
 				<div className="bg-overlay" />
-				<div className={`window animated  ${!isLoading ? "fadeInUpBig" : ""}`}>
+				<div className={`window animated  ${!isLoading ? "fadeInDown" : ""}`}>
 					<div className="window-top">
 						<span className="window-title">
 							<i className="fas fa-terminal" /> &nbsp; About Me
