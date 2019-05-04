@@ -9,9 +9,9 @@ function Contact() {
 	const [email, setEmail] = useState('');
 	const [emailMessage, setEmailMessage] = useState({});
 	const [subject, setSubject] = useState('');
-	const [subjectMessage, setSubjectMessage] = useState({})
+	const [subjectMessage, setSubjectMessage] = useState({});
 	const [message, setMessage] = useState('');
-	const [msgMessage, setMsgMessage] = useState({})
+	const [msgMessage, setMsgMessage] = useState({});
 
 	const onFormSubmit = e => {
 		e.preventDefault();
@@ -68,6 +68,19 @@ function Contact() {
 								isEmptyErrMsg="Subject is required!"
 								lengthValErrMsg="Name must have between 10 to 60 chars"
 								length={{ min: 10, max: 60 }}
+							/>
+
+							<TextField
+								textValue={message}
+								setTextValue={setMessage}
+								message={msgMessage}
+								placeholder="Enter your message..."
+								setMessage={setMsgMessage}
+								inputName="message"
+								isEmptyErrMsg="Please enter your message"
+								lengthValErrMsg="The message must have between 25 to 500 chars"
+								length={{ min: 25, max: 500 }}
+								textArea={true}
 							/>
 
 							<div className="contact-btn-cont w-50 mx-auto">

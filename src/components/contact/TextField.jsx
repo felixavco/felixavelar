@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from '../../utils/isEmpty';
 import capitalize from '../../utils/capitalize';
 import { inputError, inputSuccess, msgError, msgSuccess } from './messageStyles';
 
-
-function TextField({ textValue, setTextValue, message, setMessage, placeholder, inputName, isEmptyErrMsg, lengthValErrMsg, length, capitalizeInput = false }) {
+function TextField({
+	textValue,
+	setTextValue,
+	message,
+	setMessage,
+	placeholder,
+	inputName,
+	isEmptyErrMsg,
+	lengthValErrMsg,
+	length,
+	capitalizeInput = false,
+	textArea = false
+}) {
+	useEffect(
+		() => {
+			if (textValue.length > length.min || textValue.length < length.max) {
+				setMessage({ text: '', error: false, animation: false });
+			} else {
+				setMessage({ text: lengthValErrMsg, error: true, animation: true });
+			}
+		},
+		[textValue]
+	);
 
 	const onNameBlur = () => {
 		if (isEmpty(textValue)) {
@@ -15,47 +36,72 @@ function TextField({ textValue, setTextValue, message, setMessage, placeholder, 
 		} else {
 			setMessage({ text: '', error: false, animation: false });
 		}
-  };
-  
-  const onChangeHandler = (e) => {
-    if(capitalizeInput) {
-      setTextValue(e.target.value.split(' ').map((n) => capitalize(n)).join(' '))
-    } else {
-      setTextValue(e.target.value)
-    }
-  }
+	};
 
-	return (
-		<div className="form-group">
-			<input
-				style={message.error ? inputError : textValue === '' ? null : inputSuccess}
-				type="text"
-				className={`form-control animated faster ${message.animation ? 'shake' : ''}`}
-				onAnimationEnd={() => setMessage({ ...message, animation: false })}
-				placeholder={placeholder}
-				name={inputName}
-				value={textValue} 
-				onChange={(e) => onChangeHandler(e)}
-				onBlur={onNameBlur}
-			/>
-			<small className="form-text" style={message.error ? msgError : textValue === '' ? null : msgSuccess}>
-				{message.text}
-			</small>
-		</div>
-	);
+	const onChangeHandler = e => {
+		if (capitalizeInput) {
+			setTextValue(e.target.value.split(' ').map(n => capitalize(n)).join(' '));
+		} else {
+			setTextValue(e.target.value);
+		}
+	};
+
+	let content;
+
+	if (textArea) {
+		content = (
+			<div className="form-group">
+				<textarea
+					style={message.error ? inputError : textValue === '' ? null : inputSuccess}
+					className={`form-control animated  ${message.animation ? 'tada' : ''}`}
+					class="form-control"
+					id={textValue}
+					value={textValue}
+					placeholder={placeholder}
+					onChange={e => onChangeHandler(e)}
+					onBlur={onNameBlur}
+				/>
+				<small className="form-text" style={message.error ? msgError : textValue === '' ? null : msgSuccess}>
+					{message.text}
+				</small>
+			</div>
+		);
+	} else {
+		content = (
+			<div className="form-group">
+				<input
+					style={message.error ? inputError : textValue === '' ? null : inputSuccess}
+					type="text"
+					className={`form-control animated ${message.animation ? 'tada' : ''}`}
+					onAnimationEnd={() => setMessage({ ...message, animation: false })}
+					placeholder={placeholder}
+					name={inputName}
+					value={textValue}
+					onChange={e => onChangeHandler(e)}
+					onBlur={onNameBlur}
+				/>
+				<small className="form-text" style={message.error ? msgError : textValue === '' ? null : msgSuccess}>
+					{message.text}
+				</small>
+			</div>
+		);
+	}
+
+	return content;
 }
 
 TextField.propTypes = {
-	textValue: PropTypes.string.isRequired, 
-	message: PropTypes.string.isRequired, 
-	setTextValue: PropTypes.func.isRequired, 
-	setMessage: PropTypes.func.isRequired, 
-  placeholder: PropTypes.string.isRequired, 
-  inputName: PropTypes.string.isRequired, 
-  isEmptyErrMsg: PropTypes.string.isRequired, 
-  lengthValErrMsg: PropTypes.string.isRequired, 
-	length: PropTypes.object, 
-	capitalizeInput: PropTypes.bool, 
+	textValue: PropTypes.string.isRequired,
+	message: PropTypes.string.isRequired,
+	setTextValue: PropTypes.func.isRequired,
+	setMessage: PropTypes.func.isRequired,
+	placeholder: PropTypes.string,
+	inputName: PropTypes.string.isRequired,
+	isEmptyErrMsg: PropTypes.string.isRequired,
+	lengthValErrMsg: PropTypes.string.isRequired,
+	length: PropTypes.object,
+	capitalizeInput: PropTypes.bool,
+	textArea: PropTypes.bool
 };
 
 export default TextField;

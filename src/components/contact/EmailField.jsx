@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import isEmpty from '../../utils/isEmpty';
 import { inputError, inputSuccess, msgError, msgSuccess } from './messageStyles';
 
 function EmailField({ email, setEmail, emailMessage, setEmailMessage }) {
 
+	useEffect(
+		() => {
+			if (validateEmail(email)) {
+				setEmailMessage({ text: '', error: false, animation: false });
+			}
+		},
+		[ email ]
+	);
+
 	const validateEmail = (email_val) => {
 		const regex = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 		return regex.test(email_val);
 	};
+
+
 
 	const onEmailBlur = () => {
 		if (isEmpty(email)) {
