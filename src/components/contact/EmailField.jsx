@@ -35,7 +35,7 @@ function EmailField({ email, setEmail, emailMessage, setEmailMessage }) {
 				<input
 					style={emailMessage.error ? inputError : email === '' ? null : inputSuccess}
 					type="text"
-					className={`form-control animated faster ${emailMessage.animation ? 'shake' : ''}`}
+					className={`form-control animated faster ${emailMessage.animation ? null : ''}`}
 					onAnimationEnd={() => setEmailMessage({ ...emailMessage, animation: false })}
 					placeholder="Email"
 					name="email"

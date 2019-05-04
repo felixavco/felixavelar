@@ -53,7 +53,7 @@ function TextField({
 			<div className="form-group">
 				<textarea
 					style={message.error ? inputError : textValue === '' ? null : inputSuccess}
-					className={`form-control animated  ${message.animation ? 'tada' : ''}`}
+					className={`form-control animated  ${message.animation ? null : ''}`}
 					class="form-control"
 					id={textValue}
 					value={textValue}
@@ -72,7 +72,7 @@ function TextField({
 				<input
 					style={message.error ? inputError : textValue === '' ? null : inputSuccess}
 					type="text"
-					className={`form-control animated ${message.animation ? 'tada' : ''}`}
+					className={`form-control animated ${message.animation ? null : ''}`}
 					onAnimationEnd={() => setMessage({ ...message, animation: false })}
 					placeholder={placeholder}
 					name={inputName}
