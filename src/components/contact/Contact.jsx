@@ -1,28 +1,21 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import TextField from './TextField';
+import EmailField from './EmailField';
 
-class Contact extends Component {
-	state = {
-		name: '',
-		email: '',
-		subject: '',
-		message: ''
-	};
+function Contact() {
+	const [name, setName] = useState('');
+	const [nameMessage, setNameMessage] = useState({});
+	const [email, setEmail] = useState('');
+	const [emailMessage, setEmailMessage] = useState({});
+	const [subject, setSubject] = useState('');
+	const [subjectMessage, setSubjectMessage] = useState({})
+	const [message, setMessage] = useState('');
+	const [msgMessage, setMsgMessage] = useState({})
 
-	onChangeHandler = e => {
-		this.setState({
-			[e.target.name]: e.target.value
-		});
-	};
-
-	onFormSubmit = e => {
+	const onFormSubmit = e => {
 		e.preventDefault();
-		const data = {
-			email: this.state.email,
-			name: this.state.name,
-			subject: this.state.subject,
-			message: this.state.message
-		};
+		const data = { email, name, subject, message };
 
 		axios
 			.post('https://comp-api.herokuapp.com/api/admin/send-mail', data)
@@ -38,70 +31,56 @@ class Contact extends Component {
 			.catch(err => console.error(err));
 	};
 
-	render() {
-		const { name, email, subject, message } = this.state;
-		return (
-			<div id="contact ">
-				<div className="container">
-					<div className="row">
-						<div className="col-12 col-md-8 col-lg-6 mx-auto">
-							<h2 className="text-center mt-4">Let's get in touch!</h2>
-							<form onSubmit={this.onFormSubmit}>
-								<div className="form-group">
-									<input
-										onChange={this.onChangeHandler}
-										type="text"
-										className="form-control"
-										name="name"
-										placeholder="Your Name"
-										value={name}
-									/>
-								</div>
+	return (
+		<div id="contact ">
+			<div className="container">
+				<div className="row">
+					<div className="col-12 col-md-8 col-lg-5 mx-auto">
+						<h2 className="text-center mt-4">Let's get in touch!</h2>
+						<form onSubmit={onFormSubmit}>
+							<TextField
+								textValue={name}
+								setTextValue={setName}
+								message={nameMessage}
+								setMessage={setNameMessage}
+								placeholder="Name"
+								inputName="name"
+								isEmptyErrMsg="Please enter your name!"
+								lengthValErrMsg="Name must have between 3 to 50 chars"
+								length={{ min: 3, max: 50 }}
+								capitalizeInput={true}
+							/>
 
-								<div className="form-group">
-									<input
-										onChange={this.onChangeHandler}
-										type="email"
-										className="form-control"
-										name="email"
-										placeholder="Your Email Address"
-										value={email}
-									/>
-								</div>
+							<EmailField
+								email={email}
+								setEmail={setEmail}
+								emailMessage={emailMessage}
+								setEmailMessage={setEmailMessage}
+							/>
 
-								<div className="form-group">
-									<input
-										onChange={this.onChangeHandler}
-										type="text"
-										className="form-control"
-										name="subject"
-										placeholder="Subject"
-										value={subject}
-									/>
-								</div>
+							<TextField
+								textValue={subject}
+								setTextValue={setSubject}
+								message={subjectMessage}
+								setMessage={setSubjectMessage}
+								placeholder="Subject"
+								inputName="subject"
+								isEmptyErrMsg="Subject is required!"
+								lengthValErrMsg="Name must have between 10 to 60 chars"
+								length={{ min: 10, max: 60 }}
+							/>
 
-								<div className="form-group">
-									<textarea
-										onChange={this.onChangeHandler}
-										className="form-control"
-										name="message"
-										placeholder="Message"
-										value={message}
-									/>
-								</div>
-
-								<div className="contact-btn-cont w-50 mx-auto">
-									<button className="btn btn-info btn-block ">
-										Send&nbsp;<i className="far fa-paper-plane" />
-									</button>
-								</div>
-							</form>
-						</div>
+							<div className="contact-btn-cont w-50 mx-auto">
+								<button className="btn btn-info btn-block ">
+									Send&nbsp;<i className="far fa-paper-plane" />
+								</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>
-		);
-	}
+		</div>
+	);
 }
 
 export default Contact;
