@@ -1,5 +1,5 @@
 import React from 'react';
-import DoubleRingLoader from './loaders/DoubleRingLoader';
+import DoubleRingLoader from './DoubleRingLoader';
 import './Loader.scss';
 
 const Loader = () => {

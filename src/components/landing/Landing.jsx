@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import mainBg from '../../img/mainBg.jpg';
-import Loader from '../commons/Loader';
+import Loader from '../commons/loaders/Loader';
 import Particles from 'react-particles-js';
 
 class Landing extends Component {

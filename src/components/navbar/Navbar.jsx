@@ -8,9 +8,8 @@ export default class Navbar extends Component {
 		navClass: false,
 		menu: [
 			{ name: 'Home', path: '/' },
-			// { name: 'About', path: '/about' },
 			{ name: 'Portfolio', path: '/portfolio' },
-			// { name: 'Contact', path: '/contact' }
+			{ name: 'Contact', path: '/contact' }
 		]
 	};
 

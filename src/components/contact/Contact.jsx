@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Fragment } from 'react';
 import axios from 'axios';
 import TextField from './TextField';
 import EmailField from './EmailField';
+import Loader from '../commons/loaders/Loader';
+import Particles from 'react-particles-js';
 import ReCAPTCHA from 'react-google-recaptcha';
+import mainBg from '../../img/mainBg.jpg';
 import isEmpty from '../../utils/isEmpty';
 const site_key = '6Le-xqEUAAAAAJM-k1sStqJp5YVKgQz4jHND2DA7';
 
@@ -16,10 +19,18 @@ function Contact() {
 	const [message, setMessage] = useState('');
 	const [msgMessage, setMsgMessage] = useState({});
 	const [isHuman, setIsHuman] = useState(false);
-	const [ isLoading, setIsLoading ] = useState(false);
-	const [ isSending, setIsSending ] = useState(false);
+	const [isLoading, setIsLoading] = useState(true);
+	const [isSending, setIsSending] = useState(false);
 	//* If there is no Errors this enables the submit button
-	const [ areFieldsValid, setAreFieldsValid ] = useState(false);
+	const [areFieldsValid, setAreFieldsValid] = useState(false);
+
+	useEffect(() => {
+		return () => {
+			setTimeout(() => {
+				setIsLoading(false);
+			}, 1500);
+		};
+	});
 
 	useEffect(
 		() => {
@@ -31,34 +42,101 @@ function Contact() {
 				} else {
 					setAreFieldsValid(true);
 				}
+			} else {
+				setAreFieldsValid(false);
 			}
 		},
-		[ nameMessage, emailMessage, subjectMessage, msgMessage ]
+		[nameMessage, emailMessage, subjectMessage, msgMessage, name, subject, email, message]
+	);
+
+	useEffect(
+		() => {
+			if (message.length > 500) {
+				setMsgMessage({ text: 'You have reach the char limit of 500', error: true, animation: true });
+			} else {
+				setMsgMessage({ text: null, error: false, animation: false });
+			}
+		},
+		[message]
 	);
 
 	const onFormSubmit = e => {
 		e.preventDefault();
+		setIsSending(true);
 		const data = { email, name, subject, message };
 
 		axios
 			.post('https://comp-api.herokuapp.com/api/admin/send-mail', data)
-			.then(res => {
-				setEmail("");
-				setName("");
-				setSubject("")
-				setMessage("")
-				console.log(res);
+			.then(() => {
+				setEmail('');
+				setName('');
+				setSubject('');
+				setMessage('');
+				setIsSending(false);
 			})
-			.catch(err => console.error(err));
+			.catch(err => {
+				setIsSending(false);
+				console.error(err);
+			});
+	};
+
+	let loaderComponent = null;
+	if (isLoading) {
+		loaderComponent = <Loader />;
+	}
+
+	let button_content;
+	if (isSending) {
+		button_content = (
+			<Fragment>
+				Sending...&nbsp;<i className="fas fa-spinner fa-pulse" />
+			</Fragment>
+		);
+	} else {
+		button_content = (
+			<Fragment>
+				Send &nbsp;<i className="far fa-paper-plane" />
+			</Fragment>
+		);
+	}
+
+	const options = {
+		particles: {
+			number: {
+				value: 50
+			},
+			size: {
+				value: 3
+			}, 
+			move: {
+				speed: 5,
+				direction: 'top-right',
+				out_mode: 'out'
+			}
+		},
+		interactivity: {
+			events: {
+				onhover: {
+					enable: true,
+					mode: 'grab'
+				},
+				onclick: {
+					enable: false,
+					mode: 'push'
+				}
+			}
+		}
 	};
 
 	return (
-		<div id="contact ">
+		<div id="contact" style={{ backgroundImage: `url(${mainBg})` }}>
+			<Particles className="particles" params={options} />
+			<div className="bg-overlay" />
 			<div className="container">
 				<div className="row">
-					<div className="col-12 col-md-8 col-lg-5 mx-auto">
+					<div className="col-12 col-md-8 col-lg-5 mx-auto form-cont">
 						<h2 className="text-center mt-4">Let's get in touch!</h2>
-						<small style={{color: "#aaa"}}>All Fields are required</small>
+						<small className="form-message">All Fields are required</small>
 
 						<form onSubmit={onFormSubmit}>
 							<TextField
@@ -105,20 +183,27 @@ function Contact() {
 								length={{ min: 25, max: 500 }}
 								textArea={true}
 							/>
+							<small className="msg-counter">
+								{message.length}/500
+							</small>
 
-							<div className="mx-auto mb-3 d-flex justify-content-center">
-								<ReCAPTCHA sitekey={site_key} onChange={(value) => setIsHuman(value)} />
+							<div className="mx-auto mb-3 d-flex justify-content-center captcha">
+								<ReCAPTCHA sitekey={site_key} onChange={value => setIsHuman(value ? true : false)} />
 							</div>
 
 							<div className="contact-btn-cont d-flex justify-content-center">
-								<button className="btn btn-info">
-									Send&nbsp;<i className="far fa-paper-plane" />
+								<button
+									className={`send-btn ${areFieldsValid && isHuman ? '' : 'disabled-btn'}`}
+									disabled={`${areFieldsValid && isHuman ? '' : 'disabled'}`}
+								>
+									{button_content}
 								</button>
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
+			{loaderComponent}
 		</div>
 	);
 }

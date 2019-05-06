@@ -54,7 +54,6 @@ function TextField({
 				<textarea
 					style={message.error ? inputError : textValue === '' ? null : inputSuccess}
 					className={`form-control animated  ${message.animation ? null : ''}`}
-					class="form-control"
 					id={textValue}
 					value={textValue}
 					placeholder={placeholder}
@@ -92,7 +91,7 @@ function TextField({
 
 TextField.propTypes = {
 	textValue: PropTypes.string.isRequired,
-	message: PropTypes.string.isRequired,
+	message: PropTypes.object.isRequired,
 	setTextValue: PropTypes.func.isRequired,
 	setMessage: PropTypes.func.isRequired,
 	placeholder: PropTypes.string,

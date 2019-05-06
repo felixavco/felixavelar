@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import projects from './projects';
 import Card from './Card';
-import Loader from '../commons/Loader';
+import Loader from '../commons/loaders/Loader';
 
 class Portfolio extends Component {
 

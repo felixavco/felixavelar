@@ -4,7 +4,7 @@ body {
 }
 
 #main {
-  padding-top: 4rem;
+  padding-top: $hh;
 }
 
 @mixin flex($fd: column, $jc: center, $ai: center ){
