@@ -41,7 +41,7 @@ function Contact() {
 			setTimeout(() => {
 				setIsModalActive(false);
 				setModalContent(null);
-			}, 4000);
+			}, 3000);
 		},
 		[isModalActive]
 	);
