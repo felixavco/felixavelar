@@ -3,6 +3,7 @@ import './styles/App.css';
 //React Router
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/navbar/Navbar';
+import Footer from './components/footer/Footer';
 import Landing from './components/landing/Landing';
 import Portfolio from './components/portfolio/Portfolio';
 import Contact from './components/contact/Contact';
@@ -20,6 +21,7 @@ class App extends Component {
 							<Route exact path="/contact" component={Contact} />
 						</Switch>
 					</div>
+					<Footer />
 				</Fragment>
 			</Router>
 		);
