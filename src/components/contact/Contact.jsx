@@ -9,6 +9,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import mainBg from '../../img/mainBg.jpg';
 import isEmpty from '../../utils/isEmpty';
 const site_key = '6Le-xqEUAAAAAJM-k1sStqJp5YVKgQz4jHND2DA7';
+const URL = "https://comp-api.herokuapp.com/api/admin/send-mail"
 
 function Contact() {
 	const [name, setName] = useState('');
@@ -22,20 +23,30 @@ function Contact() {
 	const [isHuman, setIsHuman] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isSending, setIsSending] = useState(false);
-	const [isModalActive, setIsModalActive] = useState(false)
+	const [isModalActive, setIsModalActive] = useState(false);
+	const [modalColor, setModalColor] = useState('#fff');
+	const [modalContent, setModalContent] = useState(null);
 	//* If there is no Errors this enables the submit button
 	const [areFieldsValid, setAreFieldsValid] = useState(false);
 
 	useEffect(() => {
-		return () => {
-			setTimeout(() => {
-				setIsLoading(false);
-			}, 1500);
-		};
+		setTimeout(() => {
+			//* Closes the loader after 1.5s
+			setIsLoading(false);
+		}, 1500);
 	});
 
-	useEffect(
-		() => {
+	useEffect(() => {
+			//* Closes the modal after 3s;
+			setTimeout(() => {
+				setIsModalActive(false);
+				setModalContent(null);
+			}, 4000);
+		},
+		[isModalActive]
+	);
+
+	useEffect(() => {
 			//* Checks if all Fields are not empty
 			if (!isEmpty(name) && !isEmpty(email) && !isEmpty(subject) && !isEmpty(message)) {
 				//* Checks if there is no errors to enable submit button
@@ -51,8 +62,8 @@ function Contact() {
 		[nameMessage, emailMessage, subjectMessage, msgMessage, name, subject, email, message]
 	);
 
-	useEffect(
-		() => {
+	//* Checks if the user reached the char limit on the message input
+	useEffect(() => {
 			if (message.length > 500) {
 				setMsgMessage({ text: 'You have reach the char limit of 500', error: true, animation: true });
 			} else {
@@ -68,17 +79,36 @@ function Contact() {
 		const data = { email, name, subject, message };
 
 		axios
-			.post('https://comp-api.herokuapp.com/api/admin/send-mail', data)
+			.post(URL, data)
 			.then(() => {
 				setEmail('');
 				setName('');
 				setSubject('');
 				setMessage('');
 				setIsSending(false);
+				setModalColor('#D5F5E3');
+				setModalContent(
+					<h3>
+						<i className="far fa-smile" /> Your message has been successfully sent
+					</h3>
+				);
+				setIsModalActive(true);
 			})
 			.catch(err => {
 				setIsSending(false);
-				console.error(err);
+				setModalColor('#FADBD8');
+				setModalContent(
+					<div>
+						<h3>
+							<i className="far fa-frown-open" /> Something went wrong, please try later
+						</h3>
+						<p>
+							{err.toString()}
+						</p>
+					</div>
+				);
+				setIsModalActive(true);
+				console.error(err.response.data);
 			});
 	};
 
@@ -132,8 +162,8 @@ function Contact() {
 
 	return (
 		<div id="contact" style={{ backgroundImage: `url(${mainBg})` }}>
-			<Modal isActive={isModalActive} isAutoClose={true} autoCloseTime={2500}>
-				<h1>This is my modal</h1>
+			<Modal isActive={isModalActive} color={modalColor} closeModal={() => setIsModalActive(false)}>
+				{modalContent}
 			</Modal>
 			<Particles className="particles" params={options} />
 			<div className="bg-overlay" />

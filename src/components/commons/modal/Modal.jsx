@@ -2,18 +2,13 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './Modal.scss';
 
-const Modal = ({ color = '#fff', isActive, children }) => {
-	const [modalActive, setModalActive] = useState(isActive);
+const Modal = ({ color = '#fff', isActive, children, closeModal }) => {
   
-  useEffect(() => {
-    setModalActive(isActive)
-  }, [isActive])
-
 	return (
-		<div className={`modal-component ${modalActive ? 'modal-component-active' : ''}`}>
+		<div className={`modal-component ${isActive ? 'modal-component-active' : ''}`}>
 			<div style={{ background: color }} className="modal-component-content">
 				{children}
-				<button >Close</button>
+				<button onClick={closeModal} >Close</button>
 			</div>
 		</div>
 	);
@@ -22,7 +17,8 @@ const Modal = ({ color = '#fff', isActive, children }) => {
 Modal.propTypes = {
 	color: PropTypes.string,
 	isActive: PropTypes.bool.isRequired,
-	children: PropTypes.node.isRequired,
+	children: PropTypes.node,
+	closeModal: PropTypes.func.isRequired
 };
 
 export default Modal;
