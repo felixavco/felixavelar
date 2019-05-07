@@ -1,0 +1,22 @@
+.modal-component {
+  position: fixed;
+  z-index: 50;
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(#000000, 0.5);
+  top: -1000%;
+
+  .modal-component-content {
+    width: 30%;
+    min-width: 300px;
+    height: auto;
+    min-height: 150px;
+  }
+}
+
+.modal-component-active {
+  top: 0;
+}

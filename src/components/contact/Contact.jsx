@@ -3,6 +3,7 @@ import axios from 'axios';
 import TextField from './TextField';
 import EmailField from './EmailField';
 import Loader from '../commons/loaders/Loader';
+import Modal from '../commons/modal/Modal';
 import Particles from 'react-particles-js';
 import ReCAPTCHA from 'react-google-recaptcha';
 import mainBg from '../../img/mainBg.jpg';
@@ -21,6 +22,7 @@ function Contact() {
 	const [isHuman, setIsHuman] = useState(false);
 	const [isLoading, setIsLoading] = useState(true);
 	const [isSending, setIsSending] = useState(false);
+	const [isModalActive, setIsModalActive] = useState(false)
 	//* If there is no Errors this enables the submit button
 	const [areFieldsValid, setAreFieldsValid] = useState(false);
 
@@ -107,7 +109,7 @@ function Contact() {
 			},
 			size: {
 				value: 3
-			}, 
+			},
 			move: {
 				speed: 5,
 				direction: 'top-right',
@@ -130,6 +132,9 @@ function Contact() {
 
 	return (
 		<div id="contact" style={{ backgroundImage: `url(${mainBg})` }}>
+			<Modal isActive={isModalActive} isAutoClose={true} autoCloseTime={2500}>
+				<h1>This is my modal</h1>
+			</Modal>
 			<Particles className="particles" params={options} />
 			<div className="bg-overlay" />
 			<div className="container">

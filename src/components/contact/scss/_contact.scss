@@ -12,7 +12,7 @@
     background: -webkit-linear-gradient(45deg, #21618c, #08b64d);
     background: linear-gradient(45deg, #21618c, #08b64d);
     opacity: 0.3;
-    position: absolute;
+    position: fixed;
     top: 4rem;
     left: 0;
     width: 100%;
@@ -21,7 +21,7 @@
 
   
   .particles {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     z-index: 1;

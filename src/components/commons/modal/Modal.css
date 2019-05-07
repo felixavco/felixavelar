@@ -1,0 +1,24 @@
+.modal-component {
+  position: fixed;
+  z-index: 50;
+  height: 100vh;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5);
+  top: -1000%; }
+  .modal-component .modal-component-content {
+    width: 30%;
+    min-width: 300px;
+    height: auto;
+    min-height: 150px; }
+
+.modal-component-active {
+  top: 0; }
