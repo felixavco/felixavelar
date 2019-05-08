@@ -4,12 +4,13 @@ import TextField from './TextField';
 import EmailField from './EmailField';
 import Loader from '../commons/loaders/Loader';
 import Modal from '../commons/modal/Modal';
+import Helmet from 'react-helmet';
 import Particles from 'react-particles-js';
 import ReCAPTCHA from 'react-google-recaptcha';
 import mainBg from '../../img/mainBg.jpg';
 import isEmpty from '../../utils/isEmpty';
 const site_key = '6Le-xqEUAAAAAJM-k1sStqJp5YVKgQz4jHND2DA7';
-const URL = "https://comp-api.herokuapp.com/api/admin/send-mail"
+const URL = 'https://comp-api.herokuapp.com/api/admin/send-mail';
 
 function Contact() {
 	const [name, setName] = useState('');
@@ -36,7 +37,8 @@ function Contact() {
 		}, 1500);
 	});
 
-	useEffect(() => {
+	useEffect(
+		() => {
 			//* Closes the modal after 3s;
 			setTimeout(() => {
 				setIsModalActive(false);
@@ -46,7 +48,8 @@ function Contact() {
 		[isModalActive]
 	);
 
-	useEffect(() => {
+	useEffect(
+		() => {
 			//* Checks if all Fields are not empty
 			if (!isEmpty(name) && !isEmpty(email) && !isEmpty(subject) && !isEmpty(message)) {
 				//* Checks if there is no errors to enable submit button
@@ -63,7 +66,8 @@ function Contact() {
 	);
 
 	//* Checks if the user reached the char limit on the message input
-	useEffect(() => {
+	useEffect(
+		() => {
 			if (message.length > 500) {
 				setMsgMessage({ text: 'You have reach the char limit of 500', error: true, animation: true });
 			} else {
@@ -162,6 +166,9 @@ function Contact() {
 
 	return (
 		<div id="contact" style={{ backgroundImage: `url(${mainBg})` }}>
+			<Helmet>
+				<title>Let's get in touch!</title>
+			</Helmet>
 			<Modal isActive={isModalActive} color={modalColor} closeModal={() => setIsModalActive(false)}>
 				{modalContent}
 			</Modal>

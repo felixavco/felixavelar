@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import mainBg from '../../img/mainBg.jpg';
 import Loader from '../commons/loaders/Loader';
 import Particles from 'react-particles-js';
+import Helmet from 'react-helmet';
 
 class Landing extends Component {
 	constructor() {
@@ -66,59 +67,62 @@ class Landing extends Component {
 		}
 
 		const options = {
-	    "particles": {
-	        "number": {
-	            "value": 500,
-	            "density": {
-	                "enable": true
-	            }
-	        },
-	        "size": {
-	            "value": 3,
-	            "random": true,
-	            "anim": {
-	                "speed": 4,
-	                "size_min": 0.3
-	            }
-	        },
-	        "line_linked": {
-	            "enable": false
-	        },
-	        "move": {
-	            "random": true,
-	            "speed": 1,
-	            "direction": "right",
-	            "out_mode": "out"
-	        }
-	    },
-	    "interactivity": {
-	        "events": {
-	            "onhover": {
-	                "enable": false,
-	                "mode": "bubble"
-	            },
-	            "onclick": {
-	                "enable": true,
-	                "mode": "repulse"
-	            }
-	        },
-	        "modes": {
-	            "bubble": {
-	                "distance": 250,
-	                "duration": 2,
-	                "size": 0,
-	                "opacity": 0
-	            },
-	            "repulse": {
-	                "distance": 250,
-	                "duration": 1
-	            }
-	        }
-	    }
-	};
+			particles: {
+				number: {
+					value: 500,
+					density: {
+						enable: true
+					}
+				},
+				size: {
+					value: 3,
+					random: true,
+					anim: {
+						speed: 4,
+						size_min: 0.3
+					}
+				},
+				line_linked: {
+					enable: false
+				},
+				move: {
+					random: true,
+					speed: 1,
+					direction: 'right',
+					out_mode: 'out'
+				}
+			},
+			interactivity: {
+				events: {
+					onhover: {
+						enable: false,
+						mode: 'bubble'
+					},
+					onclick: {
+						enable: true,
+						mode: 'repulse'
+					}
+				},
+				modes: {
+					bubble: {
+						distance: 250,
+						duration: 2,
+						size: 0,
+						opacity: 0
+					},
+					repulse: {
+						distance: 250,
+						duration: 1
+					}
+				}
+			}
+		};
 
 		return (
 			<section id="landing" style={{ backgroundImage: `url(${mainBg})` }}>
+				<Helmet>
+					<title>Felix Avelar</title>
+				</Helmet>
 				<Particles className="particles" params={options} />
 				<div className="bg-overlay" />
 				<div className={`window animated  ${!isLoading ? 'fadeInDown' : ''}`}>
