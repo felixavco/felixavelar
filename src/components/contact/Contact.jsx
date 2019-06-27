@@ -10,7 +10,9 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import mainBg from '../../img/mainBg.jpg';
 import isEmpty from '../../utils/isEmpty';
 const site_key = '6Le-xqEUAAAAAJM-k1sStqJp5YVKgQz4jHND2DA7';
-const URL = 'https://comp-api.herokuapp.com/api/admin/send-mail';
+//* const URL = 'https://comp-api.herokuapp.com/api/admin/send-mail';
+const URL = 'https://script.google.com/macros/s/AKfycbzG04-2_va5J7FDIHOc2HbtldHk3fGd01Ee__DqKb_mB_IJakA/exec';
+
 
 function Contact() {
 	const [name, setName] = useState('');
