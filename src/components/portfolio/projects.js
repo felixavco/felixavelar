@@ -18,9 +18,9 @@ const projects = [
 		name: 'Cachadas SV',
 		img: cachadas,
 		github: 'https://github.com/felixavco/cachadas',
-		url: 'http://api.felixavelar.com/',
+		url: 'http://cachadas.felixavelar.com/',
 		description:
-			"Cachadas (bargains) SV is a fullstack project built with Node, Express, MongoDB and React & Redux, this application allows users to create post to sell or buy products, in order to create a post the user needs to create an account, once the user creates the account a verification email is sent to the user's email address, the message is sent using Sendgrid's API, the application also supports multiple image uploads, password reset via secret token sent to the registered email address."
+			"Cachadas SV is a fullstack project built with Node, Express, MongoDB and React & Redux, this application allows users to create post to sell or buy products, in order to create a post the user needs to create an account, once the user creates the account a verification email is sent to the user's email address, the message is sent using Sendgrid's API, the application also supports multiple image uploads, password reset via secret token sent to the registered email address."
 	},
 
 	{
