@@ -210,7 +210,7 @@ function Contact() {
 								inputName="subject"
 								isEmptyErrMsg="Subject is required!"
 								lengthValErrMsg="Name must have between 10 to 60 chars"
-								length={{ min: 3, max: 60 }}
+								length={{ min: 10, max: 60 }}
 							/>
 
 							<TextField
@@ -222,7 +222,7 @@ function Contact() {
 								inputName="message"
 								isEmptyErrMsg="Please enter your message"
 								lengthValErrMsg="The message must have between 25 to 500 chars"
-								length={{ min: 4, max: 500 }}
+								length={{ min: 25, max: 500 }}
 								textArea={true}
 							/>
 							<small className="msg-counter">
