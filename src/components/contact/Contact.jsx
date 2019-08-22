@@ -10,7 +10,7 @@ import ReCAPTCHA from 'react-google-recaptcha';
 import mainBg from '../../img/mainBg.jpg';
 import isEmpty from '../../utils/isEmpty';
 const site_key = '6Le-xqEUAAAAAJM-k1sStqJp5YVKgQz4jHND2DA7';
-const URL = 'http://cachadas.felixavelar.com/api/admin/felixavelar-contact';
+const URL = 'http://https://felixavelar-api.herokuapp.com/api/admin/send-mail';
 
 function Contact() {
 	const [name, setName] = useState('');
