@@ -18,9 +18,7 @@ class App extends Component {
 					<div id="main">
 						<Switch>
 							<Route exact path="/" component={Landing} />
-<!-- 							<Route exact path="/portfolio" component={Portfolio} /> -->
 							<Route exact path="/contact" component={Contact} />
-							{/* CatchAll route  404 page */}
 							<Route exact path="/not-found" component={NotFound} />
 							<Redirect to="/not-found" />
 						</Switch>
