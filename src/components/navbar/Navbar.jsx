@@ -9,7 +9,7 @@ export default class Navbar extends Component {
 		animateLinks: false,
 		menu: [
 			{ name: 'Home', path: '/' },
-			{ name: 'Portfolio', path: '/portfolio' },
+// 			{ name: 'Portfolio', path: '/portfolio' },
 			{ name: 'Contact', path: '/contact' }
 		]
 	};
